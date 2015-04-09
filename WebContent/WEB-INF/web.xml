@@ -16,6 +16,7 @@
     <url-pattern>/kuulutus.jsp</url-pattern>
     <url-pattern>/minukandideerimised.jsp</url-pattern>
     <url-pattern>/tulemused.jsp</url-pattern>
+    <url-pattern>/loputood_valimata.jsp</url-pattern>
     <url-pattern>*.html</url-pattern>
   </servlet-mapping>
 </web-app>
