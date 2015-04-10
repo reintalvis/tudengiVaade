@@ -31,18 +31,6 @@ public class tudengiVaade {
 		return new ModelAndView("tulemused");
 	}
 	
-	@RequestMapping("/oppejou_otsing")
-	public ModelAndView oppejou_otsing() {
-		ModelAndView mav = new ModelAndView("oppejou_otsing");
-	
-		InitOppejoud initializeOpetajad = new InitOppejoud();
-		List<Oppejoud> opetajad = initializeOpetajad.init();
-		
-		mav.addObject("opetajad", opetajad);
-		return mav;
-		
-	}
-	
 	@RequestMapping("/loputood_valimata")
 	public ModelAndView loputood_valimata() {
 		ModelAndView mav = new ModelAndView("loputood_valimata");
