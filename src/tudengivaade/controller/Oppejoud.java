@@ -29,6 +29,10 @@ public class Oppejoud {
 		this.email = email;
 	}
 
+	public Oppejoud() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getOppejoud_id() {
 		return oppejoud_id;
 	}
