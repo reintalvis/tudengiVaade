@@ -19,16 +19,25 @@ public class LoputooTeemaLisamiseController {
 
 	private List<LoputooTeema> minuTeemad = new ArrayList<LoputooTeema>();
 	private Logger logger = Logger.getLogger(LoputooTeemaLisamiseController.class);
-	
-    @RequestMapping(value="/lisa_loputoo_teema.jsp")
-    public String showForm(){
-        return "lisa_loputoo_teema";
-    }
 
-    @RequestMapping(value="/loputoo_teemade_nimekiri.jsp",method=RequestMethod.POST)
-    public @ResponseBody ModelAndView AddThesisSubject(String nimetus_est, String nimetus_eng, String midagi_veel, String tudeng_eesnimi, String tudeng_perenimi){
-    	logger.error("alustab!!");
-    	int count;
+	@RequestMapping(value="/lisa_loputoo_teema.jsp")
+	public String showForm(){
+		return "lisa_loputoo_teema";
+	}
+
+	@RequestMapping(value="/loputoo_teemade_nimekiri.jsp",method=RequestMethod.GET)
+	public @ResponseBody ModelAndView getThesisSubjects(){
+
+
+		ModelAndView mav = new ModelAndView("loputoo_teemade_nimekiri");
+
+		mav.addObject("teemad", minuTeemad);
+		return mav;
+	}
+	@RequestMapping(value="/loputoo_teemade_nimekiri.jsp",method=RequestMethod.POST)
+	public @ResponseBody ModelAndView AddThesisSubject(String nimetus_est, String nimetus_eng, String midagi_veel, String tudeng_eesnimi, String tudeng_perenimi){
+		logger.error("alustab!!");
+		int count;
 		try {
 			count = minuTeemad.size();
 			//logger.error("siin!!");
@@ -43,20 +52,20 @@ public class LoputooTeemaLisamiseController {
 		logger.error(midagi_veel);
 		logger.error(tudeng_eesnimi);
 		logger.error(tudeng_perenimi);
-		*/
-		
-    	//staatiliselt on sees, et õpilane on 1 aasta õpilane
+		 */
+
+		//staatiliselt on sees, et õpilane on 1 aasta õpilane
 		LoputooTeema teema = new LoputooTeema(count, nimetus_est, nimetus_eng, midagi_veel, new Oppejoud(), new Tudeng(tudeng_eesnimi, tudeng_perenimi, 1));
-    	//logger.error(teema);
-    	minuTeemad.add(teema);
+		//logger.error(teema);
+		minuTeemad.add(teema);
 
 		ModelAndView mav = new ModelAndView("loputoo_teemade_nimekiri");
-		
+
 		mav.addObject("teemad", minuTeemad);
 		return mav;
-    }
+	}
 
 
 
-    
+
 }

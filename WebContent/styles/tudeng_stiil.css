@@ -1,9 +1,60 @@
-#ppejou_tulemused{
-	visibility:hidden;
+* { 
+margin: 0; padding: 0; outline: 0;
 }
+
 .otsing_label{
 	width:100px;
 }
 .teema_lisamise_label{
 	width:200px;
+}
+header{  
+	padding: 5px 0;  	
+	width: 100%; /*üle kogu akna */
+	background-color: #000; /*must*/
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+	position: fixed; /*scrollimisel ei liigu */
+	z-index: 10;  	
+}
+h1 {  		
+	font-size: 40px;
+	position: relative;
+	top: -20px; 			/* nihutab teksti päisest 15 pikslit allapoole */  	
+}
+h1 a,h1 a:hover {
+	color: #fff;  	
+	background-color: #428bca; 
+	padding: 5px 25px 10px 25px;
+	width: 300px;
+	border-radius: 10px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+	border-top: 1px solid rgba(255, 255, 255, 0.6);
+	text-decoration: none;	
+ }
+
+#headercontainer{
+	width: 1300px;  	
+	margin: 0 auto;
+	position: relative;  	
+}
+#content{
+	position: fixed;
+	margin-top: 100px;
+} 
+nav ul {
+	position: absolute;
+	right: 0;
+	display: block;
+	margin-top: -37px;
+} 
+nav ul li {
+	display: inline;
+	margin-left: 50px;
+
+}
+nav ul li a {
+	font-size: 24px;
+	border-bottom: none;
+	color: #fff;
 }

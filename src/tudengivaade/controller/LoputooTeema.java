@@ -1,15 +1,15 @@
 package tudengivaade.controller;
 
 public class LoputooTeema {
-	
+
 	private int loputooTeema_id;
 	private String nimetus_est;
 	private String nimetus_eng;
-	
+
 	private String midagi_veel;
 	private Oppejoud juhendaja;
 	private Tudeng tudeng;
-	
+
 	public LoputooTeema(int loputooTeema_id, String nimetus_est,
 			String nimetus_eng, String midagi_veel, Oppejoud juhendaja, Tudeng tudeng) {
 		super();
@@ -68,11 +68,11 @@ public class LoputooTeema {
 	public void setJuhendaja(Oppejoud juhendaja) {
 		this.juhendaja = juhendaja;
 	}
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 
 }

@@ -30,11 +30,11 @@ public class InitOppejoud {
 		opetajad.add(new Oppejoud(20, "Rauno", "Kulla", "Boss", "Tehnoloogia", "Tallinn, Tehnika 33", "20", "53451569", "raunokulla@hotmail.com"));
 		opetajad.add(new Oppejoud(21, "Rauno", "Kulla", "Boss", "Tehnoloogia", "Tallinn, Tehnika 33", "20", "53451569", "raunokulla@hotmail.com"));
 		opetajad.add(new Oppejoud(22, "Rauno", "Kulla", "Boss", "Tehnoloogia", "Tallinn, Tehnika 33", "20", "53451569", "raunokulla@hotmail.com"));
-		*/
+		 */
 		return opetajad;
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
+
 
 }
