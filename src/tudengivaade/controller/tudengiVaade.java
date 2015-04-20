@@ -36,8 +36,8 @@ public class tudengiVaade {
 		ModelAndView mav = new ModelAndView("loputood_valimata");
 		
 		List<Tudeng> tudengid = new ArrayList<Tudeng>();
-		tudengid.add(new Tudeng("Ees", "Pere", 2));
-		tudengid.add(new Tudeng("Veel", "Yks", 3));
+		tudengid.add(new Tudeng(1, "Ees", "Pere","102112IAPP", 2));
+		tudengid.add(new Tudeng(1, "Veel", "Yks","101021IAPM", 3));
 		mav.addObject("tudengid", tudengid );
 		return mav;
 	}

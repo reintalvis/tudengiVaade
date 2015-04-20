@@ -20,7 +20,7 @@
 				<nav> <!-- HTML5 navigation tag -->
 					<ul>
 						<li><a href="#" onclick="oppejouOtsing();return false;">Õppejõu otsing</a></li>
-						<li><a href="#" onclick="loputooTeemaLisamine();return false;">Lõputöö teema</a></li>
+						<li><a href="#" onclick="loputooTeemaOtsing();return false;">Lõputöö teemad</a></li>
 						<li><a href="#" onclick="oppejouOtsing();return false;">hetkel tühi</a></li>
 						<li><a href="#" onclick="oppejouOtsing();return false;">hetkel tühi</a></li>
 					</ul>				

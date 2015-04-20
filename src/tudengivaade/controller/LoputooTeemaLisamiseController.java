@@ -17,26 +17,81 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoputooTeemaLisamiseController {
 
-	private List<LoputooTeema> minuTeemad = new ArrayList<LoputooTeema>();
+	private Initialize initialize = new Initialize();
+	
+
+	private List<Tudeng> tudengid = initialize.initTudengid();
+	private List<Oppejoud> opetajad = initialize.initOpetajad();
+	private List<LoputooTeema> minuTeemad = initialize.initTeemad();
+	
 	private Logger logger = Logger.getLogger(LoputooTeemaLisamiseController.class);
 
 	@RequestMapping(value="/lisa_loputoo_teema.jsp")
-	public String showForm(){
-		return "lisa_loputoo_teema";
-	}
+	public @ResponseBody ModelAndView showForm(String id){
+		Oppejoud oppejoud = null;
+		for(Oppejoud oj : opetajad){
+			if (oj.getOppejoud_id() == Integer.parseInt(id)){
+				oppejoud = oj;
+				break;
+			}
+		}
+		
 
-	@RequestMapping(value="/loputoo_teemade_nimekiri.jsp",method=RequestMethod.GET)
-	public @ResponseBody ModelAndView getThesisSubjects(){
+		ModelAndView mav = new ModelAndView("lisa_loputoo_teema");
 
-
-		ModelAndView mav = new ModelAndView("loputoo_teemade_nimekiri");
-
-		mav.addObject("teemad", minuTeemad);
+		mav.addObject("oppejoud", oppejoud);
 		return mav;
 	}
-	@RequestMapping(value="/loputoo_teemade_nimekiri.jsp",method=RequestMethod.POST)
-	public @ResponseBody ModelAndView AddThesisSubject(String nimetus_est, String nimetus_eng, String midagi_veel, String tudeng_eesnimi, String tudeng_perenimi){
+	
+	@RequestMapping(value="/loputoo_teema_otsing.jsp",method=RequestMethod.GET)
+	public String showSearchForm(){
+
+		return "loputoo_teema_otsing";
+	}
+
+	@RequestMapping(value="/loputoo_teemade_nimekiri_oppejou_vaatest.jsp",method=RequestMethod.GET)
+	public @ResponseBody ModelAndView getThesisSubjectsByTeacher(String id){
+		logger.error("siiani tuli");
+		List<LoputooTeema> sobivadTeemad = new ArrayList<LoputooTeema>();
+		for(LoputooTeema loputeema : minuTeemad){
+			if (loputeema.getJuhendaja().getOppejoud_id() == Integer.parseInt(id)){
+				sobivadTeemad.add(loputeema);
+			}
+		}
+		ModelAndView mav = new ModelAndView("loputoo_teemade_nimekiri_oppejou_vaatest");
+
+		mav.addObject("teemad", sobivadTeemad);
+		return mav;
+	}
+	@RequestMapping(value="/loputoo_teema_otsing.jsp",method=RequestMethod.POST)
+	public @ResponseBody ModelAndView getThesisSubjectsByName(String nimetus_est, String nimetus_eng, String oppejoud_eesnimi, String oppejoud_perenimi){
+		List<LoputooTeema> sobivadTeemad = new ArrayList<LoputooTeema>();
+		logger.error(nimetus_est);
+		logger.error(nimetus_eng);
+		logger.error(oppejoud_eesnimi);
+		logger.error(oppejoud_perenimi);
+		for(LoputooTeema loputeema : minuTeemad){
+			if (nimetus_est != null && nimetus_est != "" && loputeema.getNimetus_est().toLowerCase().contains(nimetus_est.toLowerCase()) ||
+					nimetus_eng != null && nimetus_eng != "" && loputeema.getNimetus_eng().toLowerCase().contains(nimetus_eng.toLowerCase()) ||
+							oppejoud_eesnimi != null && oppejoud_eesnimi != "" && loputeema.getJuhendaja().getEesnimi().toLowerCase().contains(oppejoud_eesnimi.toLowerCase()) ||
+							oppejoud_perenimi != null && oppejoud_perenimi != "" && loputeema.getJuhendaja().getPerenimi().toLowerCase().contains(oppejoud_perenimi.toLowerCase())){
+				sobivadTeemad.add(loputeema);
+			}
+		}
+		ModelAndView mav = new ModelAndView("loputoo_teemade_nimekiri_teemade_otsingu_vaatest");
+
+		mav.addObject("teemad", sobivadTeemad);
+		return mav;
+	}
+	@RequestMapping(value="/loputoo_teemade_nimekiri_oppejou_vaatest.jsp",method=RequestMethod.POST)
+	public @ResponseBody ModelAndView AddThesisSubject(String juhendaja_id, String tudeng_id, String nimetus_est, String nimetus_eng, String kirjeldus){
 		logger.error("alustab!!");
+		logger.error("alustab!!");
+		logger.error("alustab!!");
+		logger.error(juhendaja_id);
+		logger.error(tudeng_id);
+		Oppejoud oppejoud = null;
+		Tudeng tudeng = null;
 		int count;
 		try {
 			count = minuTeemad.size();
@@ -46,23 +101,24 @@ public class LoputooTeemaLisamiseController {
 			count = 0;
 			//logger.error("Vähemalt siia jõuab enne kui viga saab!");
 		}
-		/*logger.error(count);
-		logger.error(nimetus_est);
-		logger.error(nimetus_eng);
-		logger.error(midagi_veel);
-		logger.error(tudeng_eesnimi);
-		logger.error(tudeng_perenimi);
-		 */
+		for(Oppejoud oj : opetajad){
+			if (oj.getOppejoud_id() == Integer.parseInt(juhendaja_id)){
+				oppejoud = oj;
+				break;
+			}
+		}
+		for(Tudeng tud : tudengid){
+			if (tud.getTudeng_id() == Integer.parseInt(tudeng_id)){
+				tudeng = tud;
+				break;
+			}
+		}
+		
+		LoputooTeema teema = new LoputooTeema(count, nimetus_est, nimetus_eng, kirjeldus, "Välja pakutud", true, oppejoud, tudeng);
 
-		//staatiliselt on sees, et õpilane on 1 aasta õpilane
-		LoputooTeema teema = new LoputooTeema(count, nimetus_est, nimetus_eng, midagi_veel, new Oppejoud(), new Tudeng(tudeng_eesnimi, tudeng_perenimi, 1));
-		//logger.error(teema);
 		minuTeemad.add(teema);
+		return getThesisSubjectsByTeacher(juhendaja_id);
 
-		ModelAndView mav = new ModelAndView("loputoo_teemade_nimekiri");
-
-		mav.addObject("teemad", minuTeemad);
-		return mav;
 	}
 
 

@@ -15,12 +15,26 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class OppejouOtsingController {
-	private InitOppejoud initializeOpetajad = new InitOppejoud();
-	private List<Oppejoud> opetajad = initializeOpetajad.init();
+	private Initialize initialize = new Initialize();
+	private List<Oppejoud> opetajad = initialize.initOpetajad();
 
     @RequestMapping(value="/oppejou_otsing.jsp",method=RequestMethod.GET)
     public String showForm(){
         return "oppejou_otsing";
+    }
+    @RequestMapping(value="/oppejou_andmed.jsp",method=RequestMethod.GET)
+    public @ResponseBody ModelAndView teachersData(String id){
+    	Oppejoud opetaja = null;
+    	for(Oppejoud opet : opetajad){
+    		if(opet.getOppejoud_id() == Integer.parseInt(id)){
+    			opetaja = opet;
+    			break;
+    		}
+    	}
+    	
+    	ModelAndView mav = new ModelAndView("oppejou_andmed");
+    	mav.addObject("opetaja", opetaja);
+        return mav;
     }
 
     @RequestMapping(value="/oppejou_otsing.jsp",method=RequestMethod.POST)

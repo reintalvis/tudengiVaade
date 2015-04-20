@@ -30,49 +30,24 @@
 		<table>
 			<tr>
 				<td class="teema_lisamise_label"><label
-					class="control-label" for="aktiivsus">Midagi veel:</label></td>
+					class="control-label" for="aktiivsus">Kirjeldus:</label></td>
 				<td><div class="col-sm-4 input-group">
-						<input type="text" name="midagi_veel" id="midagi_veel">
+						<textarea type="text" name="kirjeldus" id="kirjeldus"></textarea>
 					</div></td>
 			</tr>
 		</table>
 	</div>
-	<div class="form-group">
-		<table>
-			<tr>
-				<td class="teema_lisamise_label"><label
-					class="control-label" for="aktiivsus">Tudengi
-						eesnimi:</label></td>
-				<td><div class="col-sm-4 input-group">
-						<input type="text" name="tudeng_eesnimi" id="tudeng_eesnimi">
-					</div></td>
-			</tr>
-		</table>
-	</div>
-	<div class="form-group">
-		<table>
-			<tr>
-				<td class="teema_lisamise_label"><label
-					class="control-label" for="aktiivsus">Tudengi
-						perenimi:</label></td>
-				<td><div class="col-sm-4 input-group">
-						<input type="text" name="tudeng_perenimi" id="tudeng_perenimi">
-					</div></td>
-			</tr>
-		</table>
-	</div>
+
 	<div class="form-group">
 
 
 		<input type="submit" class="col-sm-4 btn btn-primary btn-default"
-			value="Salvesta" onclick="lisaTeema();return false;">
+			value="Salvesta" onclick="lisaTeema(${oppejoud.getOppejoud_id()},1);return false;">
 
 	</div>
-</form>
+</form></br></br></br>
+<a href="#" onclick="oppejouAndmed(${oppejoud.getOppejoud_id()});return false;">Tagasi</a>
 <div id="teemadeNupp">
-<input type="submit" class="col-sm-4 btn btn-primary btn-default" style="margin-top: -23%; margin-left: 30%;"
-			value="Vaata teemasid" onclick="vaataTeemasid();return false;">
-</div>
 </div>
 
 

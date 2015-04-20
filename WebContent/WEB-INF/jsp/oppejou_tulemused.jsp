@@ -13,7 +13,7 @@
 	</thead>
 	<tbody>
 		<c:forEach items="${opetajad}" var="opetaja" varStatus="loop">
-			<tr>
+			<tr onclick="oppejouAndmed(${opetaja.getOppejoud_id()}); return false;" style="cursor:pointer; cursor:hand;">
 				<td>${opetaja.getOppejoud_id()}</td>
 				<td>${opetaja.getEesnimi()}</td>
 				<td>${opetaja.getPerenimi()}</td>
