@@ -14,30 +14,40 @@
 <div class="container">
   <h1>Nimekiri tudengitest, kellel on lõputöö valimata</h1>
 
-<form class="form-horizontal">
+<form action="" method="GET">
 <div class="form-group">
-      <label class="control-label col-sm-2" for="aktiivsus">Tüüp:</label>
-      <div class="col-sm-4 input-group">
-      <select class="form-control" id="aktiivsus">
-          <option>Aktiivne</option>
-          <option>Mitteaktiivne</option>
+      <label for="oppetase">Õppetase:</label>
+      <div class="input-group">
+      <select class="form-control" id="oppetase" name="oppetase">
+          <option value="B">Bakalaureuseõpe</option>
+          <option value="M">Magistriõpe</option>
+          <option value="D">Doktoriõpe</option>
       </select>
-      <span class="input-group-btn">
-        <input type="button" class="btn btn-primary btn-default" value="Näita"/>
-      </span>
       </div>
 </div>
+<div class="form-group">
+      <label for="oppeaasta">Õppeaasta:</label>
+      <div class="input-group">
+      <select class="form-control" id="oppeaasta" name="oppeaasta">
+          <option value="1">1. õppeaasta</option>
+          <option value="2">2. õppeaasta</option>
+          <option value="3">3. õppeaasta ja rohkem</option>
+      </select>
+      </div>
+</div>
+<input type="submit" class="btn btn-primary btn-default" value="Näita"/>
 </form>
 
  <table class="table table-striped">
+ <c:if test="${oppeaasta != null}">
+ <caption>Nimekiri <strong>${oppeaasta}. õppeaasta</strong> tudengitest, <strong>õppetasemel: ${oppetaseNimi}</strong> kellel on lõputöö valimata</caption>
+ </c:if>
         <thead>
           <tr>
             <th>#</th>
             <th>Eesnimi</th>
             <th>Perenimi</th>
-            <th>Õppeaasta</th>
           </tr>
-
         </thead>
         <tbody>
         <c:forEach items="${tudengid}" var="tudeng" varStatus="loop">
@@ -45,7 +55,6 @@
             <td>${loop.index+1}</td>
             <td>${tudeng.getEesnimi()}</td>
             <td>${tudeng.getPerenimi()}</td>
-            <td>${tudeng.getOppeAasta()}</td>
           </tr>
 		</c:forEach>
         </tbody>

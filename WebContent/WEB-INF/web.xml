@@ -17,6 +17,7 @@
     <url-pattern>/minukandideerimised.jsp</url-pattern>
     <url-pattern>/tulemused.jsp</url-pattern>
     <url-pattern>/loputood_valimata.jsp</url-pattern>
+    <url-pattern>/oppejoud_koormustega.jsp</url-pattern>
     <url-pattern>/oppejou_otsing.jsp</url-pattern>
     <url-pattern>/oppejou_tulemused.jsp</url-pattern>
     <url-pattern>/lisa_loputoo_teema.jsp</url-pattern>

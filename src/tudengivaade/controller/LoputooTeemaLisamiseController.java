@@ -17,12 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoputooTeemaLisamiseController {
 
-	private Initialize initialize = new Initialize();
+	private Initialize initialize = Initialize.getInstance();
 	
 
-	private List<Tudeng> tudengid = initialize.initTudengid();
-	private List<Oppejoud> opetajad = initialize.initOpetajad();
-	private List<LoputooTeema> minuTeemad = initialize.initTeemad();
+	private List<Tudeng> tudengid = initialize.getTudengid();
+	private List<Oppejoud> opetajad = initialize.getOpetajad();
+	private List<LoputooTeema> minuTeemad = initialize.getTeemad();
 	
 	private Logger logger = Logger.getLogger(LoputooTeemaLisamiseController.class);
 

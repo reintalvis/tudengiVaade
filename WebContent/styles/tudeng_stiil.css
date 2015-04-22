@@ -10,16 +10,16 @@ margin: 0; padding: 0; outline: 0;
 }
 header{  
 	padding: 5px 0;  	
-	width: 100%; /*üle kogu akna */
+	width: 100%; /*ï¿½le kogu akna */
 	background-color: #000; /*must*/
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-	position: fixed; /*scrollimisel ei liigu */
+	/*position: fixed; /*scrollimisel ei liigu */
 	z-index: 10;  	
 }
 h1 {  		
 	font-size: 40px;
 	position: relative;
-	top: -20px; 			/* nihutab teksti päisest 15 pikslit allapoole */  	
+	top: -20px; 			/* nihutab teksti pï¿½isest 15 pikslit allapoole */  	
 }
 h1 a,h1 a:hover {
 	color: #fff;  	
@@ -38,9 +38,10 @@ h1 a,h1 a:hover {
 	margin: 0 auto;
 	position: relative;  	
 }
+
 #content{
-	position: fixed;
-	margin-top: 100px;
+	/*position: fixed;*/
+	margin-top: 2em;
 } 
 nav ul {
 	position: absolute;

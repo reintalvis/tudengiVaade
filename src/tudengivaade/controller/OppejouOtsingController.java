@@ -15,8 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class OppejouOtsingController {
-	private Initialize initialize = new Initialize();
-	private List<Oppejoud> opetajad = initialize.initOpetajad();
+	private Initialize initialize = Initialize.getInstance();
+	private List<Oppejoud> opetajad = initialize.getOpetajad();
 
     @RequestMapping(value="/oppejou_otsing.jsp",method=RequestMethod.GET)
     public String showForm(){
