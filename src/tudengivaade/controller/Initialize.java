@@ -52,12 +52,12 @@ public class Initialize {
 	}
 
 	private void initTudengid(){
-		this.tudengid.add(new Tudeng(1, "Mari", "Maasikas", "143686IAPM",1));
-		this.tudengid.add(new Tudeng(2, "Jaan", "Tamm", "113686IABM",2));
-		this.tudengid.add(new Tudeng(3, "Jüri", "Vaarikas", "121686IABB",1));
-		this.tudengid.add(new Tudeng(4, "Taavi", "Kask", "112686IAPM",3));
-		this.tudengid.add(new Tudeng(5, "Tarmo", "Sammal", "081686IABB",3));
-		this.tudengid.add(new Tudeng(6, "Viktor", "Kukk", "0923231IAPM",3));
+		this.tudengid.add(new Tudeng(1, "Mari", "Maasikas", "143686IAPM",1, "B"));
+		this.tudengid.add(new Tudeng(2, "Jaan", "Tamm", "113686IABM",2, "B"));
+		this.tudengid.add(new Tudeng(3, "Jüri", "Vaarikas", "121686IABB",1, "M"));
+		this.tudengid.add(new Tudeng(4, "Taavi", "Kask", "112686IAPM",3,"B"));
+		this.tudengid.add(new Tudeng(5, "Tarmo", "Sammal", "081686IABB",3,"B"));
+		this.tudengid.add(new Tudeng(6, "Viktor", "Kukk", "0923231IAPM",3,"B"));
 	}
 
 	private void initTeemad(){
@@ -92,6 +92,42 @@ public class Initialize {
 	public List<Tudeng> getTudengid() {
 		return tudengid;
 	}
+	
+	public List<Tudeng> filtreeri_tudengid(String oppetase, Integer oppeaasta) {
+		List<LoputooTeema> teemad = getTeemad();
 
+		List<Tudeng> filtreeritudTudengid = new ArrayList<Tudeng>();
+		for (LoputooTeema loputooTeema : teemad) {
+			Tudeng tudeng = loputooTeema.getTudeng();
+			if (tudeng != null && !filtreeritudTudengid.contains(tudeng)
+					&& tudeng.getOppeAasta() == oppeaasta
+					&& tudeng.getOppetase().equals(oppetase)) {
+				filtreeritudTudengid.add(tudeng);
+			}
+		}
+		return filtreeritudTudengid;
+	}
+	
+
+	public Oppejoud getOppejoud(String id) {
+		Oppejoud oppejoud = null;
+		for(Oppejoud oj : opetajad){
+			if (oj.getOppejoud_id() == Integer.parseInt(id)){
+				oppejoud = oj;
+				break;
+			}
+		}
+		return oppejoud;
+	}
+	
+	public List<LoputooTeema> getOppejouTeemad(String id) {
+		List<LoputooTeema> sobivadTeemad = new ArrayList<LoputooTeema>();
+		for(LoputooTeema loputeema : getTeemad()){
+			if (loputeema.getJuhendaja().getOppejoud_id() == Integer.parseInt(id)){
+				sobivadTeemad.add(loputeema);
+			}
+		}
+		return sobivadTeemad;
+	}
 
 }

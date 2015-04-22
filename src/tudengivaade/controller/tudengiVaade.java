@@ -36,7 +36,6 @@ public class tudengiVaade {
 	public @ResponseBody ModelAndView loputood_valimata(String oppetase,
 			Integer oppeaasta) {
 		ModelAndView mav = new ModelAndView("loputood_valimata");
-
 		String oppetaseNimi = null;
 		if (oppetase == null) {
 			oppetase = "";
@@ -53,10 +52,12 @@ public class tudengiVaade {
 		}
 		// TODO õppeaasta valideerimine
 
-		List<Tudeng> tudengid = new ArrayList<Tudeng>();
-		tudengid.add(new Tudeng(1, "Ees", "Pere", "102112IAPP", 2));
-		tudengid.add(new Tudeng(1, "Veel", "Yks", "101021IAPM", 3));
-		mav.addObject("tudengid", tudengid);
+
+		Initialize initialize = Initialize.getInstance();
+		List<Tudeng> filtreeritudTudengid = initialize.filtreeri_tudengid(oppetase,
+				oppeaasta);
+
+		mav.addObject("tudengid", filtreeritudTudengid);
 
 		mav.addObject("oppetaseNimi", oppetaseNimi);
 		mav.addObject("oppeaasta", oppeaasta);
@@ -75,8 +76,7 @@ public class tudengiVaade {
 		for (int i = 0; i < koormused.length; i++) {
 			koormused[i] = 0;
 		}
-		System.out.println(teemad.size());
-		System.out.println(opetajad.size());
+		
 		for (int i = 0; i < opetajad.size(); i++) {
 			for (int j = 0; j < teemad.size(); j++) {
 				if (teemad.get(j).getTudeng() != null

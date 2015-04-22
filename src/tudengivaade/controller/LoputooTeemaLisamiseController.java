@@ -28,15 +28,7 @@ public class LoputooTeemaLisamiseController {
 
 	@RequestMapping(value="/lisa_loputoo_teema.jsp")
 	public @ResponseBody ModelAndView showForm(String id){
-		Oppejoud oppejoud = null;
-		for(Oppejoud oj : opetajad){
-			if (oj.getOppejoud_id() == Integer.parseInt(id)){
-				oppejoud = oj;
-				break;
-			}
-		}
-		
-
+		Oppejoud oppejoud = initialize.getOppejoud(id);
 		ModelAndView mav = new ModelAndView("lisa_loputoo_teema");
 
 		mav.addObject("oppejoud", oppejoud);
@@ -51,25 +43,17 @@ public class LoputooTeemaLisamiseController {
 
 	@RequestMapping(value="/loputoo_teemade_nimekiri_oppejou_vaatest.jsp",method=RequestMethod.GET)
 	public @ResponseBody ModelAndView getThesisSubjectsByTeacher(String id){
-		logger.error("siiani tuli");
-		List<LoputooTeema> sobivadTeemad = new ArrayList<LoputooTeema>();
-		for(LoputooTeema loputeema : minuTeemad){
-			if (loputeema.getJuhendaja().getOppejoud_id() == Integer.parseInt(id)){
-				sobivadTeemad.add(loputeema);
-			}
-		}
+		List<LoputooTeema> sobivadTeemad = initialize.getOppejouTeemad(id);
 		ModelAndView mav = new ModelAndView("loputoo_teemade_nimekiri_oppejou_vaatest");
 
 		mav.addObject("teemad", sobivadTeemad);
 		return mav;
 	}
+
 	@RequestMapping(value="/loputoo_teema_otsing.jsp",method=RequestMethod.POST)
 	public @ResponseBody ModelAndView getThesisSubjectsByName(String nimetus_est, String nimetus_eng, String oppejoud_eesnimi, String oppejoud_perenimi){
 		List<LoputooTeema> sobivadTeemad = new ArrayList<LoputooTeema>();
-		logger.error(nimetus_est);
-		logger.error(nimetus_eng);
-		logger.error(oppejoud_eesnimi);
-		logger.error(oppejoud_perenimi);
+		
 		for(LoputooTeema loputeema : minuTeemad){
 			if (nimetus_est != null && nimetus_est != "" && loputeema.getNimetus_est().toLowerCase().contains(nimetus_est.toLowerCase()) ||
 					nimetus_eng != null && nimetus_eng != "" && loputeema.getNimetus_eng().toLowerCase().contains(nimetus_eng.toLowerCase()) ||
@@ -85,21 +69,14 @@ public class LoputooTeemaLisamiseController {
 	}
 	@RequestMapping(value="/loputoo_teemade_nimekiri_oppejou_vaatest.jsp",method=RequestMethod.POST)
 	public @ResponseBody ModelAndView AddThesisSubject(String juhendaja_id, String tudeng_id, String nimetus_est, String nimetus_eng, String kirjeldus){
-		logger.error("alustab!!");
-		logger.error("alustab!!");
-		logger.error("alustab!!");
-		logger.error(juhendaja_id);
-		logger.error(tudeng_id);
+
 		Oppejoud oppejoud = null;
 		Tudeng tudeng = null;
 		int count;
 		try {
 			count = minuTeemad.size();
-			//logger.error("siin!!");
 		} catch (NullPointerException e) {
-			// TODO Auto-generated catch block
 			count = 0;
-			//logger.error("Vähemalt siia jõuab enne kui viga saab!");
 		}
 		for(Oppejoud oj : opetajad){
 			if (oj.getOppejoud_id() == Integer.parseInt(juhendaja_id)){
