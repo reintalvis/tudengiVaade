@@ -1,38 +1,8 @@
 function oppejouOtsing() {
-
-	$.ajax({
-		type: "GET",
-		url: "/Tudengivaade/oppejou_otsing.jsp",
-		success: function(response){
-			// we have the response
-			$("#content").html(
-					response
-			);
-			$("#content").show();
-
-		},
-		error: function(e){
-			alert('Error: ' + e);
-		}
-	});
+	navigeeri("/Tudengivaade/oppejou_otsing.jsp")
 }
 function loputooTeemaOtsing() {
-
-	$.ajax({
-		type: "GET",
-		url: "/Tudengivaade/loputoo_teema_otsing.jsp",
-		success: function(response){
-			// we have the response
-			$("#content").html(
-					response
-			);
-			$("#content").show();
-
-		},
-		error: function(e){
-			alert('Error: ' + e);
-		}
-	});
+	navigeeri("/Tudengivaade/loputoo_teema_otsing.jsp")
 }
 function pakuValjaTeema(id) {
 
@@ -174,42 +144,10 @@ function vahetaroll(){
 }
 
 function avatudTeema() {
-
-	$.ajax({
-		type: "GET",
-		url: "/Tudengivaade/avatud_teema.jsp",
-		success: function(response){
-			// we have the response
-			$("#content").html(
-					response
-			);
-			$("#content").show();
-			//$('#name').val('');
-			//$('#education').val('');
-		},
-		error: function(e){
-			alert('Error: ' + e);
-		}
-	});
+	navigeeri("/Tudengivaade/avatud_teema.jsp");
 }
 function minuAndmed() {
-
-	$.ajax({
-		type: "GET",
-		url: "/Tudengivaade/minu_andmed.jsp",
-		success: function(response){
-			// we have the response
-			$("#content").html(
-					response
-			);
-			$("#content").show();
-			//$('#name').val('');
-			//$('#education').val('');
-		},
-		error: function(e){
-			alert('Error: ' + e);
-		}
-	});
+	navigeeri("/Tudengivaade/minu_andmed.jsp");
 }
 function lisaPostitus() {
 	// get the form values
@@ -289,6 +227,39 @@ function kandideeri(Loputoo_id) {
 			$("#content").show();
 			//$('#name').val('');
 			//$('#education').val('');
+		},
+		error: function(e){
+			alert('Error: ' + e);
+		}
+	});
+}
+function filtreeriTudengid(oppeaasta, oppetase){
+	$.ajax({
+		type: "POST",
+		url: "/Tudengivaade/loputood_valimata.jsp",
+		data: "oppeaasta=" + oppeaasta+"&oppetase="+oppetase,
+		success: function(response){
+			// we have the response
+			$("#content").html(
+					response
+			);
+			$("#content").show();
+			//$('#name').val('');
+			//$('#education').val('');
+		},
+		error: function(e){
+			alert('Error: ' + e);
+		}
+	});
+}
+
+function navigeeri(url){
+	$.ajax({
+		type: "GET",
+		url: url,
+		success: function(response){
+			$("#content").html(response);
+			$("#content").show();
 		},
 		error: function(e){
 			alert('Error: ' + e);

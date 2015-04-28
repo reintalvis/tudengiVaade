@@ -24,7 +24,7 @@
       </select>
       </div>
 </div>
-<input type="submit" class="btn btn-primary btn-default" value="Näita"/>
+<input type="submit" class="btn btn-primary btn-default" value="Näita" onclick="filtreeriTudengid($('#oppeaasta').val(), $('#oppetase').val());return false;"/>
 </form>
 
  <table class="table table-striped">

@@ -96,6 +96,12 @@ public class Initialize {
 	}
 	
 	public List<Tudeng> filtreeri_tudengid(String oppetase, Integer oppeaasta) {
+		if(oppeaasta != null && oppetase !=null){
+			
+		}
+		else{
+			return null;
+		}
 		List<LoputooTeema> teemad = getTeemad();
 
 		List<Tudeng> filtreeritudTudengid = new ArrayList<Tudeng>();

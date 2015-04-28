@@ -3,7 +3,7 @@
 
 <html lang="en">
 <head>
-  <title>Tudengivaade</title>
+  <title>Sekretäri vaade</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="styles/bootstrap.min.css">
@@ -16,12 +16,14 @@
 <body>
 	<header>
 		<div id="headercontainer">
-				<h1><a href="index.jsp">Tudengivaade</a></h1><br>
+				<h1><a href="sekretar_index.jsp">Sekretäri vaade</a></h1><br>
 				<nav> <!-- HTML5 navigation tag -->
 					<ul>
 						<li><a href="#" onclick="oppejouOtsing();return false;">Õppejõu otsing</a></li>
 						<li><a href="#" onclick="loputooTeemaOtsing();return false;">Lõputöö teemad</a></li>
 						<li><a href="#" onclick="minuAndmed();return false;">Minu andmed</a></li>
+						<li><a href="#" onclick="navigeeri('/Tudengivaade/oppejoud_koormustega.jsp');return false;">Õppejõud koormustega</a></li>
+						<li><a href="#" onclick="navigeeri('/Tudengivaade/loputood_valimata.jsp');return false;">Vaata tudengeid</a></li>
 					</ul>				
 				</nav>
 		</div>
