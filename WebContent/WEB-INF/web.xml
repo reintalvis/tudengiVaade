@@ -13,9 +13,8 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>tudengivaade</servlet-name>
-    <url-pattern>/kuulutus.jsp</url-pattern>
-    <url-pattern>/minukandideerimised.jsp</url-pattern>
-    <url-pattern>/tulemused.jsp</url-pattern>
+    <url-pattern>/kandideerimise_tulemus.jsp</url-pattern>
+    <url-pattern>/minu_kandideerimised.jsp</url-pattern>
     <url-pattern>/loputood_valimata.jsp</url-pattern>
     <url-pattern>/oppejoud_koormustega.jsp</url-pattern>
     <url-pattern>/oppejou_otsing.jsp</url-pattern>
@@ -26,8 +25,10 @@
     <url-pattern>/loputoo_teemade_nimekiri_teemade_otsingu_vaatest.jsp</url-pattern>
     <url-pattern>/vaheta_roll.jsp</url-pattern>
     <url-pattern>/loputoo_teema_otsing.jsp</url-pattern>
-    
-    
+    <url-pattern>/loputoo_teemade_nimekiri.jsp</url-pattern>
+    <url-pattern>/avatud_teema.jsp</url-pattern>
+    <url-pattern>/minu_andmed.jsp</url-pattern>
+    <url-pattern>/teema_andmed.jsp</url-pattern>
     <url-pattern>*.htm</url-pattern>
   </servlet-mapping>
 </web-app>

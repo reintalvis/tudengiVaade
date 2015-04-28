@@ -1,13 +1,10 @@
 package tudengivaade.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import javax.websocket.Session;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,23 +12,32 @@ import org.springframework.web.servlet.ModelAndView;
 public class tudengiVaade {
 
 	private Initialize initialize = Initialize.getInstance();
+	
+	@RequestMapping(value="/kandideerimise_tulemus.jsp",method=RequestMethod.GET)
+	public @ResponseBody ModelAndView getThesisSubjects(Integer Loputoo_id){
+		LoputooTeema teema = null;
+		List<LoputooTeema> teemad = initialize.getTeemad();
+		for (LoputooTeema loputooTeema : teemad) {
+			if(loputooTeema.getLoputooTeema_id() == Loputoo_id){
+				teema = loputooTeema;
+			}
+		}
+		ModelAndView mav = new ModelAndView("kandideerimise_tulemus");
 
-	@RequestMapping("/kuulutus")
-	public ModelAndView kuulutus() {
-
-		return new ModelAndView("kuulutus");
+		mav.addObject("teema", teema);
+		return mav;
 	}
 
-	@RequestMapping("/minukandideerimised")
-	public ModelAndView minukandideerimised() {
+	@RequestMapping("/minu_kandideerimised")
+	public ModelAndView minu_kandideerimised() {
 
-		return new ModelAndView("minukandideerimised");
+		return new ModelAndView("minu_kandideerimised");
 	}
-
-	@RequestMapping("/tulemused")
-	public ModelAndView tulemused() {
-
-		return new ModelAndView("tulemused");
+	
+	@RequestMapping("/minu_andmed")
+	public ModelAndView minu_andmed() {
+ 
+		return new ModelAndView("minu_andmed");
 	}
 	
 	@RequestMapping("/vaheta_roll")

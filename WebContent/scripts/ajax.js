@@ -172,3 +172,126 @@ function vahetaroll(){
 		}
 	});
 }
+
+function avatudTeema() {
+
+	$.ajax({
+		type: "GET",
+		url: "/Tudengivaade/avatud_teema.jsp",
+		success: function(response){
+			// we have the response
+			$(".container").html(
+					response
+			);
+			$(".container").show();
+			//$('#name').val('');
+			//$('#education').val('');
+		},
+		error: function(e){
+			alert('Error: ' + e);
+		}
+	});
+}
+function minuAndmed() {
+
+	$.ajax({
+		type: "GET",
+		url: "/Tudengivaade/minu_andmed.jsp",
+		success: function(response){
+			// we have the response
+			$(".container").html(
+					response
+			);
+			$(".container").show();
+			//$('#name').val('');
+			//$('#education').val('');
+		},
+		error: function(e){
+			alert('Error: ' + e);
+		}
+	});
+}
+function lisaPostitus() {
+	// get the form values
+	var postituse_sisu = $('#postituse_sisu').val();
+
+	$.ajax({
+		type: "POST",
+		url: "/Tudengivaade/avatud_teema.jsp",
+		data: "postituse_sisu=" + postituse_sisu,
+		success: function(response){
+			// we have the response
+			$(".container").html(
+					response
+			);
+			$(".container").show();
+			//$('#name').val('');
+			//$('#education').val('');
+		},
+		error: function(e){
+			alert('Error: ' + e);
+		}
+	});
+}
+function teemaAndmed(Loputoo_id) {
+
+	$.ajax({
+		type: "GET",
+		url: "/Tudengivaade/teema_andmed.jsp",
+		data: "Loputoo_id=" + Loputoo_id,
+		success: function(response){
+			// we have the response
+			$(".container").html(
+					response
+			);
+			$(".container").show();
+			//$('#name').val('');
+			//$('#education').val('');
+		},
+		error: function(e){
+			alert('Error: ' + e);
+		}
+	});
+}
+function postitusTeemaAndmed() {
+	// get the form values
+	var postitus = $('#postitus').val();
+
+	$.ajax({
+		type: "POST",
+		url: "/Tudengivaade/teema_andmed.jsp",
+		data: "postitus=" + postitus,
+		success: function(response){
+			// we have the response
+			$(".container").html(
+					response
+			);
+			$(".container").show();
+			//$('#name').val('');
+			//$('#education').val('');
+		},
+		error: function(e){
+			alert('Error: ' + e);
+		}
+	});
+}
+function kandideeri(Loputoo_id) {
+
+	$.ajax({
+		type: "POST",
+		url: "/Tudengivaade/teema_andmed.jsp",
+		data: "Loputoo_id=" + Loputoo_id,
+		success: function(response){
+			// we have the response
+			$(".container").html(
+					response
+			);
+			$(".container").show();
+			//$('#name').val('');
+			//$('#education').val('');
+		},
+		error: function(e){
+			alert('Error: ' + e);
+		}
+	});
+}

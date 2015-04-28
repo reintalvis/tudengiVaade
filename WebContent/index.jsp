@@ -21,8 +21,7 @@
 					<ul>
 						<li><a href="#" onclick="oppejouOtsing();return false;">Õppejõu otsing</a></li>
 						<li><a href="#" onclick="loputooTeemaOtsing();return false;">Lõputöö teemad</a></li>
-						<li><a href="#" onclick="oppejouOtsing();return false;">hetkel tühi</a></li>
-						<li><a href="#" onclick="oppejouOtsing();return false;">hetkel tühi</a></li>
+						<li><a href="#" onclick="minuAndmed();return false;">Minu andmed</a></li>
 					</ul>				
 				</nav>
 		</div>
