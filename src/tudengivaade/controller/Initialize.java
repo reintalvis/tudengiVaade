@@ -7,6 +7,7 @@ public class Initialize {
 	private List<Oppejoud> opetajad = new ArrayList <Oppejoud>();
 	private List<LoputooTeema> teemad = new ArrayList<LoputooTeema>();
 	private List<Tudeng> tudengid = new ArrayList<Tudeng>();
+	private String roll = "tudeng";
 
 
 	private static Initialize instance = null;
@@ -128,6 +129,24 @@ public class Initialize {
 			}
 		}
 		return sobivadTeemad;
+	}
+	public String getRoll() {
+		return roll;
+	}
+	public void setRoll(String roll) {
+		this.roll = roll;
+	}
+	public String getEesnimi() {
+		if(getRoll().equals("tudeng")){
+			return "Tudeng";
+		}
+		return "Sekretär";
+	}
+	public String getPerenimi() {
+		if(getRoll().equals("tudeng")){
+			return "Pere";
+		}
+		return "Perenimi";
 	}
 
 }

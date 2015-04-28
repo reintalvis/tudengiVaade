@@ -13,7 +13,7 @@
   <script src="scripts/ajax.js"></script>
  
 </head>
-<body>${message}
+<body>
 	<header>
 		<div id="headercontainer">
 				<h1><a href="index.jsp">Tudengivaade</a></h1>

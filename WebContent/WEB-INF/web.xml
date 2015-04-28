@@ -24,6 +24,7 @@
     <url-pattern>/oppejou_andmed.jsp</url-pattern>
     <url-pattern>/loputoo_teemade_nimekiri_oppejou_vaatest.jsp</url-pattern>
     <url-pattern>/loputoo_teemade_nimekiri_teemade_otsingu_vaatest.jsp</url-pattern>
+    <url-pattern>/vaheta_roll.jsp</url-pattern>
     <url-pattern>/loputoo_teema_otsing.jsp</url-pattern>
     
     

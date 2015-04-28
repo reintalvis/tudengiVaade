@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class tudengiVaade {
 
+	private Initialize initialize = Initialize.getInstance();
+
 	@RequestMapping("/kuulutus")
 	public ModelAndView kuulutus() {
 
@@ -30,6 +32,18 @@ public class tudengiVaade {
 	public ModelAndView tulemused() {
 
 		return new ModelAndView("tulemused");
+	}
+	
+	@RequestMapping("/vaheta_roll")
+	public @ResponseBody String vaheta_roll() {
+	    String roll = initialize.getRoll();
+		if(roll.equals("tudeng")){
+			initialize.setRoll("sekretär");
+		}
+		else{
+			initialize.setRoll("tudeng");
+		}
+		return initialize.getEesnimi() + " " + initialize.getPerenimi();
 	}
 
 	@RequestMapping("/loputood_valimata")
@@ -67,7 +81,6 @@ public class tudengiVaade {
 	@RequestMapping("/oppejoud_koormustega")
 	public @ResponseBody ModelAndView oppejoudKoormustega(Integer oppejou_id) {
 		ModelAndView mav = new ModelAndView("oppejoud_koormustega");
-		Initialize initialize = Initialize.getInstance();
 
 		List<Oppejoud> opetajad = initialize.getOpetajad();
 		List<LoputooTeema> teemad = initialize.getTeemad();

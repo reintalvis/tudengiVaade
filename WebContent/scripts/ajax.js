@@ -157,3 +157,18 @@ function vaataOppejouTeemasid(id) {
 		}
 	});
 }
+function vahetaroll(){
+	$.ajax({
+		type: "POST",
+		url: "/Tudengivaade/vaheta_roll.jsp",
+		success: function(response){
+			// we have the response
+			$("#kasutajanime_link").html(
+					response
+			);
+		},
+		error: function(e){
+			console.log("Viga rolli vahetamisel");
+		}
+	});
+}
