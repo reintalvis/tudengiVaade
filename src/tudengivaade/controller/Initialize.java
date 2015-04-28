@@ -8,6 +8,7 @@ public class Initialize {
 	private List<LoputooTeema> teemad = new ArrayList<LoputooTeema>();
 	private List<Tudeng> tudengid = new ArrayList<Tudeng>();
 	private String roll = "tudeng";
+	private int tudengiOppeaasta = 2;
 
 
 	private static Initialize instance = null;
@@ -147,6 +148,9 @@ public class Initialize {
 			return "Pere";
 		}
 		return "Perenimi";
+	}
+	public int getOppeaasta() {
+		return tudengiOppeaasta ;
 	}
 
 }

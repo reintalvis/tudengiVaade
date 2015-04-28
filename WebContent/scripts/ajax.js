@@ -65,10 +65,10 @@ function lisaTeema(juhendaja_id, tudeng_id) {
 		data: "juhendaja_id=" + juhendaja_id + "&tudeng_id=" + tudeng_id + "&nimetus_est=" + nimetus_est + "&nimetus_eng=" + nimetus_eng + "&kirjeldus=" + kirjeldus,
 		success: function(response){
 			// we have the response
-			$(".container").html(
+			$("#content").html(
 					response
 			);
-			$(".container").show();
+			$("#content").show();
 
 		},
 		error: function(e){
@@ -110,10 +110,10 @@ function teostaTeemaOtsing() {
 		data: "nimetus_est=" + nimetus_est + "&nimetus_eng=" + nimetus_eng + "&oppejoud_eesnimi=" + oppejoud_eesnimi +"&oppejoud_perenimi=" + oppejoud_perenimi,
 		success: function(response){
 			// we have the response
-			$(".container").html(
+			$("#content").html(
 					response
 			);
-			$(".container").show();
+			$("#content").show();
 		},
 		error: function(e){
 			alert('Error: ' + e);
@@ -128,10 +128,10 @@ function oppejouAndmed(id) {
 		data: "id=" + id,
 		success: function(response){
 			// we have the response
-			$(".container").html(
+			$("#content").html(
 					response
 			);
-			$(".container").show();
+			$("#content").show();
 			$("#oppejou_tulemused").hide();
 		},
 		error: function(e){
@@ -147,10 +147,10 @@ function vaataOppejouTeemasid(id) {
 		data: "id=" + id,
 		success: function(response){
 			// we have the response
-			$(".container").html(
+			$("#content").html(
 					response
 			);
-			$(".container").show();
+			$("#content").show();
 		},
 		error: function(e){
 			alert('Oppejoul puuduvad teemad!');
@@ -180,10 +180,10 @@ function avatudTeema() {
 		url: "/Tudengivaade/avatud_teema.jsp",
 		success: function(response){
 			// we have the response
-			$(".container").html(
+			$("#content").html(
 					response
 			);
-			$(".container").show();
+			$("#content").show();
 			//$('#name').val('');
 			//$('#education').val('');
 		},
@@ -199,10 +199,10 @@ function minuAndmed() {
 		url: "/Tudengivaade/minu_andmed.jsp",
 		success: function(response){
 			// we have the response
-			$(".container").html(
+			$("#content").html(
 					response
 			);
-			$(".container").show();
+			$("#content").show();
 			//$('#name').val('');
 			//$('#education').val('');
 		},
@@ -221,10 +221,10 @@ function lisaPostitus() {
 		data: "postituse_sisu=" + postituse_sisu,
 		success: function(response){
 			// we have the response
-			$(".container").html(
+			$("#content").html(
 					response
 			);
-			$(".container").show();
+			$("#content").show();
 			//$('#name').val('');
 			//$('#education').val('');
 		},
@@ -241,10 +241,10 @@ function teemaAndmed(Loputoo_id) {
 		data: "Loputoo_id=" + Loputoo_id,
 		success: function(response){
 			// we have the response
-			$(".container").html(
+			$("#content").html(
 					response
 			);
-			$(".container").show();
+			$("#content").show();
 			//$('#name').val('');
 			//$('#education').val('');
 		},
@@ -263,10 +263,10 @@ function postitusTeemaAndmed() {
 		data: "postitus=" + postitus,
 		success: function(response){
 			// we have the response
-			$(".container").html(
+			$("#content").html(
 					response
 			);
-			$(".container").show();
+			$("#content").show();
 			//$('#name').val('');
 			//$('#education').val('');
 		},
@@ -283,10 +283,10 @@ function kandideeri(Loputoo_id) {
 		data: "Loputoo_id=" + Loputoo_id,
 		success: function(response){
 			// we have the response
-			$(".container").html(
+			$("#content").html(
 					response
 			);
-			$(".container").show();
+			$("#content").show();
 			//$('#name').val('');
 			//$('#education').val('');
 		},

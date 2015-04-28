@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<div class="container">
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -23,3 +24,4 @@
 		</c:forEach>
 	</tbody>
 </table>
+</div>

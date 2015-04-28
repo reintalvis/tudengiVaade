@@ -1,15 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-  <title>Nimekiri õppejõududest koormustega</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles/bootstrap.min.css">
-  <script src="scripts/jquery.min.js"></script>
-  <script src="scripts/bootstrap.min.js"></script>
-</head>
-</head>
-<body>
 <div class="container">
   <h1>Nimekiri õppejõududest koormustega</h1>
         <table class="table table-striped">
@@ -39,5 +28,3 @@
         </tbody>
 </table>
 </div>
-</body>
-</html>

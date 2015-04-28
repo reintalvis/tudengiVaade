@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<div class="container">
 
 <h1>Lõputöö teemad</h1>
 
@@ -30,3 +31,4 @@
 	</tbody>
 </table>
 <a href="#" onclick="loputooTeemaOtsing();return false;">Tagasi</a>
+</div>

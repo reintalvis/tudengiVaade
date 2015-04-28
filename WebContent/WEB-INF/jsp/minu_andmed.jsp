@@ -1,23 +1,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<div class="container">
 <h1>Minu andmed</h1>
 
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Eesnimi: </th>
-			<td>${teema.getEesnimi()}</td>
-		</tr>
-		<tr>
-			<th>Perekonnanimi: </th>
-			<td>${teema.getPerenimi()}</td>
-		</tr>
-		<tr>
-			<th>Õppeaasta: </th>
-			<td>${teema.getOppeAasta()}</td>
-		</tr>
-	</thead>
 	<tbody>
-
+		<tr>
+			<td><strong>Eesnimi:</strong></td>
+			<td>${eesnimi}</td>
+		<tr>
+			<td><strong>Perekonnanimi:</strong></td>
+			<td>${perenimi}</td>
+		</tr>
+		<tr>
+			<td><strong>Õppeaasta:</strong></td>
+			<td>${oppeaasta}</td>
+		</tr>
 	</tbody>
 </table>
+</div>

@@ -36,8 +36,12 @@ public class tudengiVaade {
 	
 	@RequestMapping("/minu_andmed")
 	public ModelAndView minu_andmed() {
- 
-		return new ModelAndView("minu_andmed");
+		ModelAndView mav = new ModelAndView("minu_andmed");
+		mav.addObject("eesnimi", initialize.getEesnimi());
+		mav.addObject("perenimi", initialize.getPerenimi());
+		mav.addObject("oppeaasta", initialize.getOppeaasta());
+		
+		return mav;
 	}
 	
 	@RequestMapping("/vaheta_roll")
