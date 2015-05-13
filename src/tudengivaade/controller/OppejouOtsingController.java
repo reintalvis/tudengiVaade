@@ -10,16 +10,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
+/**
+ * Õppejõu otsingut teostav controller.
+ * @author Admin
+ *
+ */
 @Controller
 public class OppejouOtsingController {
 	private Initialize initialize = Initialize.getInstance();
 	private List<Oppejoud> opetajad = initialize.getOpetajad();
 
+	/**
+	 * Õppejõu otsingule suunav meetod.
+	 * @return
+	 */
     @RequestMapping(value="/oppejou_otsing.jsp",method=RequestMethod.GET)
     public String showForm(){
         return "oppejou_otsing";
     }
+    /**
+     * Õppejõu andmete vaatamisele suunav meetod
+     * @param id
+     * @return
+     */
     @RequestMapping(value="/oppejou_andmed.jsp",method=RequestMethod.GET)
     public @ResponseBody ModelAndView teachersData(String id){
     	Oppejoud opetaja = null;
@@ -35,6 +48,13 @@ public class OppejouOtsingController {
         return mav;
     }
 
+    /**
+     * Õppejõu otsingut teostav meetod. Vastab otsingu tingimustele sobivate õppejõudude andmed.
+     * @param eesnimi
+     * @param perenimi
+     * @param instituut
+     * @return
+     */
     @RequestMapping(value="/oppejou_otsing.jsp",method=RequestMethod.POST)
     public @ResponseBody ModelAndView showTeachers(String eesnimi, String perenimi, String instituut){
         List<Oppejoud> sobivadOpetajad = new ArrayList<Oppejoud>();
@@ -49,7 +69,11 @@ public class OppejouOtsingController {
 		return mav;
     }
 
-
+    /**
+     * legacy
+     * @param model
+     * @return
+     */
     @RequestMapping(value="/oppejou_tulemused.jsp")
     public String teacherResults(ModelMap model){
         return "oppejou_tulemused";

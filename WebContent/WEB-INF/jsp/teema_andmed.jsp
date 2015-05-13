@@ -63,10 +63,21 @@
 <div id="teema_andmed">
 
 <div class="form-group">
+
 	<table>
+
+		<c:forEach items="${teema.getKommentaar()}" var="kommentaar" varStatus="loop">
+			<tr >
+				<td class="otsing_label">${kommentaar.getTudeng().getEesnimi()} ${kommentaar.getTudeng().getPerenimi()}</td>
+				<td><textarea rows=5 cols=110 disabled>${kommentaar.getPostitus()}</textarea></td>
+				<td>${kommentaar.getAeg()}</td>
+			</tr>
+		</c:forEach>
+	</table>
+		<table>
 		<tr>
 			<td class="otsing_label"><label class="control-label col-sm-2"
-				for="aktiivsus">Vestlus:</label></td>
+				for="aktiivsus">Küsimus:</label></td>
 			<td><div class="col-sm-4 input-group">
 				<textarea name=postitus id="postitus" rows=5 cols=110></textarea>
 			</div></td>
@@ -76,7 +87,7 @@
 <div class="form-group">
 
 <input type="submit" class="col-sm-4 btn btn-primary btn-default"
-		value="Postita" onclick="postitusTeemaAndmed();return false;">
+		value="Postita" onclick="postitusTeemaAndmed(${teema.getLoputooTeema_id()}, 1);return false;">
 
 </div>
 

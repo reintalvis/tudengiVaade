@@ -1,5 +1,10 @@
 package tudengivaade.controller;
 
+/**
+ * Õppejõu andmeid talletav klass.
+ * @author Admin
+ *
+ */
 public class Oppejoud {
 	
 	private int oppejoud_id;
@@ -13,7 +18,18 @@ public class Oppejoud {
 	private String telefon;
 	private String email;
 	
-	
+	/**
+	 * 
+	 * @param oppejoud_id
+	 * @param eesnimi
+	 * @param perenimi
+	 * @param ametikoht
+	 * @param instituut
+	 * @param aadress
+	 * @param ruum
+	 * @param telefon
+	 * @param email
+	 */
 	public Oppejoud(int oppejoud_id, String eesnimi, String perenimi, String ametikoht,
 			String instituut, String aadress, String ruum, String telefon,
 			String email) {

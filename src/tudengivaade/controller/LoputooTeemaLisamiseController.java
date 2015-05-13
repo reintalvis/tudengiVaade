@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
+/**
+ * Lõputöö teema andmete kontroller.
+ * @author Admin
+ *
+ */
 @Controller
 public class LoputooTeemaLisamiseController {
 
@@ -25,7 +29,12 @@ public class LoputooTeemaLisamiseController {
 	private List<LoputooTeema> minuTeemad = initialize.getTeemad();
 	
 	private Logger logger = Logger.getLogger(LoputooTeemaLisamiseController.class);
-
+	/**
+	 * Uue lõputöö teema lisamise vaate suunamine. Sisendina märgitakse õppejõu, kellele teemat pakutakse, id.
+	 * 
+	 * @param id
+	 * @return mav
+	 */
 	@RequestMapping(value="/lisa_loputoo_teema.jsp")
 	public @ResponseBody ModelAndView showForm(String id){
 		Oppejoud oppejoud = initialize.getOppejoud(id);
@@ -34,13 +43,21 @@ public class LoputooTeemaLisamiseController {
 		mav.addObject("oppejoud", oppejoud);
 		return mav;
 	}
-	
+	/**
+	 * Lõputöö teema otsingu vaate suunamine.
+	 * @return
+	 */
 	@RequestMapping(value="/loputoo_teema_otsing.jsp",method=RequestMethod.GET)
 	public String showSearchForm(){
 
 		return "loputoo_teema_otsing";
 	}
 
+	/**
+	 * Kindla õppejõuga seotud teemade vaate suunamin. Sisendina märgitakse õppejõu, kelle teemasid soovitakse vaadata, id.
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value="/loputoo_teemade_nimekiri_oppejou_vaatest.jsp",method=RequestMethod.GET)
 	public @ResponseBody ModelAndView getThesisSubjectsByTeacher(String id){
 		List<LoputooTeema> sobivadTeemad = initialize.getOppejouTeemad(id);
@@ -49,6 +66,14 @@ public class LoputooTeemaLisamiseController {
 		mav.addObject("teemad", sobivadTeemad);
 		return mav;
 	}
+	/**
+	 * Lõputöö teema otsingu tulemuste vaate suunamine. Sisendina märgitakse kasutaja sisestatud andmed.
+	 * @param nimetus_est
+	 * @param nimetus_eng
+	 * @param oppejoud_eesnimi
+	 * @param oppejoud_perenimi
+	 * @return
+	 */
 
 	@RequestMapping(value="/loputoo_teema_otsing.jsp",method=RequestMethod.POST)
 	public @ResponseBody ModelAndView getThesisSubjectsByName(String nimetus_est, String nimetus_eng, String oppejoud_eesnimi, String oppejoud_perenimi){
@@ -67,6 +92,15 @@ public class LoputooTeemaLisamiseController {
 		mav.addObject("teemad", sobivadTeemad);
 		return mav;
 	}
+	/**
+	 * Õpilase poolt õppejõule teema välja pakkumine. Teostatakse teema lisamine õppejõule.
+	 * @param juhendaja_id
+	 * @param tudeng_id
+	 * @param nimetus_est
+	 * @param nimetus_eng
+	 * @param kirjeldus
+	 * @return
+	 */
 	@RequestMapping(value="/loputoo_teemade_nimekiri_oppejou_vaatest.jsp",method=RequestMethod.POST)
 	public @ResponseBody ModelAndView AddThesisSubject(String juhendaja_id, String tudeng_id, String nimetus_est, String nimetus_eng, String kirjeldus){
 

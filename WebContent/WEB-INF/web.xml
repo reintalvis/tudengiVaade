@@ -29,7 +29,9 @@
     <url-pattern>/avatud_teema.jsp</url-pattern>
     <url-pattern>/minu_andmed.jsp</url-pattern>
     <url-pattern>/teema_andmed.jsp</url-pattern>
+    <url-pattern>/lisa_kommentaar.jsp</url-pattern>
     <url-pattern>/sekretar_index.jsp</url-pattern>
+    
     <url-pattern>*.htm</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -1,11 +1,21 @@
 package tudengivaade.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+/**
+ * Lõputöö teema informatsiooni talletav klass.
+ * @author Admin
+ *
+ */
 public class LoputooTeema {
 
 	private int loputooTeema_id;
 	private String nimetus_est;
 	private String nimetus_eng;
 	private String kirjeldus;
+	private List<TeemaKommentaar> kommentaar;
+
+
 
 
 	private String staatus;
@@ -13,7 +23,17 @@ public class LoputooTeema {
 
 	private Oppejoud juhendaja;
 	private Tudeng tudeng;
-
+/**
+ * 
+ * @param loputooTeema_id
+ * @param nimetus_est
+ * @param nimetus_eng
+ * @param kirjeldus
+ * @param staatus
+ * @param opilase_teema - tõeväärtus veerg, mis kirjeldab, kas teema on loonud õppejõud (default) või õpilane.
+ * @param juhendaja
+ * @param tudeng
+ */
 	public LoputooTeema(int loputooTeema_id, String nimetus_est,
 			String nimetus_eng, String kirjeldus, String staatus, boolean opilase_teema, Oppejoud juhendaja, Tudeng tudeng) {
 		super();
@@ -25,6 +45,7 @@ public class LoputooTeema {
 		this.opilase_teema = opilase_teema;
 		this.juhendaja = juhendaja;
 		this.tudeng = tudeng;
+		this.kommentaar = new ArrayList<TeemaKommentaar>();
 	}
 
 	public int getLoputooTeema_id() {
@@ -88,6 +109,13 @@ public class LoputooTeema {
 
 	public void setJuhendaja(Oppejoud juhendaja) {
 		this.juhendaja = juhendaja;
+	}
+	public List<TeemaKommentaar> getKommentaar() {
+		return kommentaar;
+	}
+
+	public void setKommentaar(List<TeemaKommentaar> kommentaar) {
+		this.kommentaar = kommentaar;
 	}
 
 

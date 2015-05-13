@@ -191,14 +191,14 @@ function teemaAndmed(Loputoo_id) {
 		}
 	});
 }
-function postitusTeemaAndmed() {
+function postitusTeemaAndmed(Loputoo_id, tudeng_id) {
 	// get the form values
 	var postitus = $('#postitus').val();
 
 	$.ajax({
 		type: "POST",
-		url: "/Tudengivaade/teema_andmed.jsp",
-		data: "postitus=" + postitus,
+		url: "/Tudengivaade/lisa_kommentaar.jsp",
+		data: "postitus=" + postitus + "&Loputoo_id=" + Loputoo_id + "&tudeng_id=" + tudeng_id,
 		success: function(response){
 			// we have the response
 			$("#content").html(

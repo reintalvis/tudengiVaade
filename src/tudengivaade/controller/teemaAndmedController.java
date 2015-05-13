@@ -1,6 +1,8 @@
 package tudengivaade.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -62,6 +64,43 @@ public class teemaAndmedController {
 			mav.addObject("teema", teema);
 			return mav;
 		}
+
+
+		ModelAndView mav = new ModelAndView("teema_andmed");
+
+		mav.addObject("teema", teema);
+		return mav;
+
+	}
+	
+	@SuppressWarnings("null")
+	@RequestMapping(value = "/lisa_kommentaar.jsp", method = RequestMethod.POST)
+	public @ResponseBody ModelAndView AddComment(Integer Loputoo_id, String postitus, Integer tudeng_id) {
+		LoputooTeema teema = null;
+		Tudeng tudeng = null;
+		
+		List<LoputooTeema> teemad = initialize.getTeemad();
+		List<Tudeng> tudengid = initialize.getTudengid();
+		
+		for (LoputooTeema loputooTeema : teemad) {
+			if (loputooTeema.getLoputooTeema_id() == Loputoo_id) {
+				teema = loputooTeema;
+				break;
+			}
+		}
+		
+		for (Tudeng tud : tudengid){
+			if( tud.getTudeng_id() == tudeng_id ){
+				tudeng = tud;
+				break;
+			}
+		}
+		
+		
+		teema.getKommentaar().add(new TeemaKommentaar(1, postitus, new Oppejoud(), tudeng, new Date()));
+		
+		
+		
 
 
 		ModelAndView mav = new ModelAndView("teema_andmed");

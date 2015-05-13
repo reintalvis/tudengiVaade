@@ -1,12 +1,15 @@
 package tudengivaade.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Date;
 import java.util.List;
 
 public class Initialize {
 	private List<Oppejoud> opetajad = new ArrayList <Oppejoud>();
 	private List<LoputooTeema> teemad = new ArrayList<LoputooTeema>();
 	private List<Tudeng> tudengid = new ArrayList<Tudeng>();
+	private List<TeemaKommentaar>  kommentaarid = new ArrayList<TeemaKommentaar>();
 	private String roll = "tudeng";
 	private int tudengiOppeaasta = 2;
 
@@ -21,6 +24,7 @@ public class Initialize {
 			instance.initOpetajad();
 			instance.initTudengid();
 			instance.initTeemad();
+			instance.initTeemaKommentaar();
 		}
 		return instance;
 	}
@@ -83,6 +87,18 @@ public class Initialize {
 		this.teemad.add(new LoputooTeema(18, "18. lõputöö teema", "18th thesis", "", "Välja pakutud", true, this.opetajad.get(1), new Tudeng()));
 	}
 
+	private void initTeemaKommentaar(){
+		this.teemad.get(1).getKommentaar().add(new TeemaKommentaar(1, "Esimene kommentaar", this.opetajad.get(1), this.tudengid.get(1), new Date()));
+		this.teemad.get(1).getKommentaar().add(new TeemaKommentaar(2, "Teine kommentaar", new Oppejoud(), this.tudengid.get(2), new Date()));
+		this.teemad.get(2).getKommentaar().add(new TeemaKommentaar(3, "Kolmas kommentaar", new Oppejoud(), this.tudengid.get(2), new Date()));
+		this.teemad.get(2).getKommentaar().add(new TeemaKommentaar(4, "Neljas kommentaar", this.opetajad.get(1), new Tudeng(), new Date()));
+		this.teemad.get(3).getKommentaar().add(new TeemaKommentaar(5, "Viies kommentaar", new Oppejoud(), this.tudengid.get(2), new Date()));
+		this.teemad.get(3).getKommentaar().add(new TeemaKommentaar(6, "Kuues kommentaar", this.opetajad.get(1), new Tudeng(), new Date()));
+		this.teemad.get(4).getKommentaar().add(new TeemaKommentaar(7, "Seitsmes kommentaar", new Oppejoud(), this.tudengid.get(2), new Date()));
+		this.teemad.get(4).getKommentaar().add(new TeemaKommentaar(8, "Kaheksas kommentaar", this.opetajad.get(1), new Tudeng(), new Date()));
+		this.teemad.get(5).getKommentaar().add(new TeemaKommentaar(9, "Üheksas kommentaar", new Oppejoud(), this.tudengid.get(2), new Date()));
+
+	}
 	public List<Oppejoud> getOpetajad() {
 		return opetajad;
 	}
@@ -94,9 +110,12 @@ public class Initialize {
 	public List<Tudeng> getTudengid() {
 		return tudengid;
 	}
+	public List<TeemaKommentaar> getKommentaarid() {
+		return kommentaarid;
+	}
 	
 	public List<Tudeng> filtreeri_tudengid(String oppetase, Integer oppeaasta) {
-		if(oppeaasta != null && oppetase !=null){
+		if(oppeaasta != null && oppetase != null){
 			
 		}
 		else{
