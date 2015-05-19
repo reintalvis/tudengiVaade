@@ -1,5 +1,9 @@
 package tudengivaade.controller;
-
+/**
+ * Tudengi andmeid talletav klass.
+ * @author Admin
+ *
+ */
 public class Tudeng {
 	
 	private int tudeng_id;
@@ -9,7 +13,15 @@ public class Tudeng {
 	private String oppetase;
 	private int oppeAasta;
 	
-	
+	/**
+	 * 
+	 * @param tudeng_id
+	 * @param eesnimi
+	 * @param perenimi
+	 * @param matrikkel
+	 * @param oppeAasta
+	 * @param oppetase
+	 */
 	public Tudeng(int tudeng_id, String eesnimi, String perenimi, String matrikkel, int oppeAasta, String oppetase) {
 		super();
 		this.tudeng_id = tudeng_id;

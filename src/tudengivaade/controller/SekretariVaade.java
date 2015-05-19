@@ -6,12 +6,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
+/**
+ * Sekretäri spetsiifilist funktsionaalsust juhtiv kontroller.
+ * @author Admin
+ *
+ */
 @Controller
 public class SekretariVaade {
 
 	private Initialize initialize = Initialize.getInstance();
 
+	/**
+	 * suunab sekretäri vaate avalehele
+	 * @return
+	 */
 	@RequestMapping("/sekretar_index")
 	public ModelAndView sekretariIndex() {
 
@@ -19,6 +27,12 @@ public class SekretariVaade {
 	}
 	
 
+	/**
+	 * Suunab vaatesse, mis kuvab välja õpilased, kellel lõputöö valimata vastavalt sisendina saadud õppeaastale.
+	 * @param oppetase
+	 * @param oppeaasta
+	 * @return
+	 */
 	@RequestMapping("/loputood_valimata")
 	public @ResponseBody ModelAndView loputood_valimata(String oppetase,
 			Integer oppeaasta) {
@@ -51,8 +65,12 @@ public class SekretariVaade {
 		return mav;
 	}
 
+	/**
+	 * Suunab vaatesse, mis kuvab välja õppejõudude nimekirja õppejõudude koormustega. 
+	 * @return
+	 */
 	@RequestMapping("/oppejoud_koormustega")
-	public @ResponseBody ModelAndView oppejoudKoormustega(Integer oppejou_id) {
+	public @ResponseBody ModelAndView oppejoudKoormustega() {
 		ModelAndView mav = new ModelAndView("oppejoud_koormustega");
 
 		List<Oppejoud> opetajad = initialize.getOpetajad();

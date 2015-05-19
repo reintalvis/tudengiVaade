@@ -11,7 +11,11 @@ import java.nio.charset.Charset;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-
+/**
+ * Serveri poolset teenustelt andmete pärimise tomingut teostav klass
+ * @author Admin
+ *
+ */
 public class JsonReader {
 
   private static String readAll(Reader rd) throws IOException {
@@ -23,6 +27,13 @@ public class JsonReader {
     return sb.toString();
   }
 
+  /**
+   * Meetod tagastab JSONArray tüüpi vastuse, mis on saadud sisendina märgitud URL-ilt.
+   * @param url
+   * @return
+   * @throws IOException
+   * @throws JSONException
+   */
   public static JSONArray readJsonFromUrl(String url) throws IOException, JSONException {
     InputStream is = new URL(url).openStream();
     try {

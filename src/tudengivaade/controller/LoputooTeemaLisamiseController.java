@@ -1,6 +1,7 @@
 package tudengivaade.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -129,6 +130,109 @@ public class LoputooTeemaLisamiseController {
 
 		minuTeemad.add(teema);
 		return getThesisSubjectsByTeacher(juhendaja_id);
+
+	}
+	/**
+	 * Suunab konkreetse lõputöö teema andmete vaatesse. Sisendiks märgitud lõputöö teema, mille andmeid kuvatakse, id
+	 * @param Loputoo_id
+	 * @return
+	 */
+	@RequestMapping(value = "/teema_andmed.jsp", method = RequestMethod.GET)
+	public @ResponseBody ModelAndView getThesisSubjects(Integer Loputoo_id) {
+		LoputooTeema teema = null;
+		for (LoputooTeema loputooTeema : minuTeemad) {
+			if (loputooTeema.getLoputooTeema_id() == Loputoo_id) {
+				teema = loputooTeema;
+			}
+		}
+		ModelAndView mav = new ModelAndView("teema_andmed");
+
+		mav.addObject("teema", teema);
+		return mav;
+	}
+
+	/**
+	 * Post meetod, mis käsitleb tudengi poolt lõputöö teemale kandideerimise funktsionaalsust.
+	 * @param Loputoo_id
+	 * @param nimetus_est
+	 * @param nimetus_eng
+	 * @param kirjeldus
+	 * @param staatus
+	 * @param olek
+	 * @param juhendaja
+	 * @param tudeng
+	 * @param postitus
+	 * @return
+	 */
+	@RequestMapping(value = "/teema_andmed.jsp", method = RequestMethod.POST)
+	public @ResponseBody ModelAndView AddThesisSubject(Integer Loputoo_id,
+			String nimetus_est, String nimetus_eng, String kirjeldus,
+			String staatus, Boolean olek, Oppejoud juhendaja, Tudeng tudeng,
+			String postitus) {
+		LoputooTeema teema = null;
+		for (LoputooTeema loputooTeema : minuTeemad) {
+			if (loputooTeema.getLoputooTeema_id() == Loputoo_id) {
+				teema = loputooTeema;
+			}
+		}
+		if(teema != null && teema.getStaatus().equals("Välja pakutud")){
+			teema.setTudeng(new Tudeng(226,"Kandideerija", "Perenimi", "1234IAPM",3,"B"));
+			teema.setStaatus("Broneeritud");
+			
+
+			ModelAndView mav = new ModelAndView("kandideerimise_tulemus");
+
+			mav.addObject("teema", teema);
+			return mav;
+		}
+
+
+		ModelAndView mav = new ModelAndView("teema_andmed");
+
+		mav.addObject("teema", teema);
+		return mav;
+
+	}
+	
+	/**
+	 * Lõputöö teemale kommentaari lisamise funktsionaaluse teostamine. Sisendina märgitakse lõputöö, mida kommenteeritakse, id ning kommenteeritav tekst (postitus)
+	 * ja tudeng, kes kommenteerib. Suunatakse tagasi lõputöö andmete vaatesse, kuhu on lisatud kommentaar.
+	 * @param Loputoo_id
+	 * @param postitus
+	 * @param tudeng_id
+	 * @return
+	 */
+	@RequestMapping(value = "/lisa_kommentaar.jsp", method = RequestMethod.POST)
+	public @ResponseBody ModelAndView AddComment(Integer Loputoo_id, String postitus, Integer tudeng_id) {
+		LoputooTeema teema = null;
+		Tudeng tudeng = null;
+		
+		
+		for (LoputooTeema loputooTeema : minuTeemad) {
+			if (loputooTeema.getLoputooTeema_id() == Loputoo_id) {
+				teema = loputooTeema;
+				break;
+			}
+		}
+		
+		for (Tudeng tud : tudengid){
+			if( tud.getTudeng_id() == tudeng_id ){
+				tudeng = tud;
+				break;
+			}
+		}
+		
+		
+		teema.getKommentaar().add(new TeemaKommentaar(1, postitus, new Oppejoud(), tudeng, new Date()));
+		
+		
+		
+
+
+		ModelAndView mav = new ModelAndView("teema_andmed");
+
+		mav.addObject("teema", teema);
+		return mav;
 
 	}
 

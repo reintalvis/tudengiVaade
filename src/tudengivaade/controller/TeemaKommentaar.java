@@ -1,7 +1,11 @@
 package tudengivaade.controller;
 
 import java.util.Date;
-
+/**
+ * Lõputöö teemade kohta käivate kommentaaride andmeid talletav klass
+ * @author Admin
+ *
+ */
 public class TeemaKommentaar {
 	
 	private int kommentaar_id;
@@ -11,7 +15,14 @@ public class TeemaKommentaar {
 	private Date aeg;
 	
 	
-	
+	/**
+	 * 
+	 * @param kommentaar_id
+	 * @param postitus
+	 * @param oppejoud
+	 * @param tudeng
+	 * @param aeg
+	 */
 	public TeemaKommentaar(int kommentaar_id, String postitus,
 			Oppejoud oppejoud, Tudeng tudeng, Date aeg) {
 		super();
