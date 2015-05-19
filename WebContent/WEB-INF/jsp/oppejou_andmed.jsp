@@ -31,53 +31,9 @@
 	<table>
 		<tr>
 			<td class="otsing_label"><label class="control-label col-sm-2"
-				for="aktiivsus">Ametikoht:</label></td>
-			<td>
-					${opetaja.getAmetikoht()}
-				</td>
-		</tr>
-	</table>
-</div>
-<div class="form-group">
-	<table>
-		<tr>
-			<td class="otsing_label"><label class="control-label col-sm-2"
 				for="aktiivsus">Instituut:</label></td>
 			<td>
 					${opetaja.getInstituut()}
-				</td>
-		</tr>
-	</table>
-</div>
-<div class="form-group">
-	<table>
-		<tr>
-			<td class="otsing_label"><label class="control-label col-sm-2"
-				for="aktiivsus">Aadress:</label></td>
-			<td>
-					${opetaja.getAadress()}
-				</td>
-		</tr>
-	</table>
-</div>
-<div class="form-group">
-	<table>
-		<tr>
-			<td class="otsing_label"><label class="control-label col-sm-2"
-				for="aktiivsus">Ruum:</label></td>
-			<td>
-					${opetaja.getRuum()}
-				</td>
-		</tr>
-	</table>
-</div>
-<div class="form-group">
-	<table>
-		<tr>
-			<td class="otsing_label"><label class="control-label col-sm-2"
-				for="aktiivsus">Telefon:</label></td>
-			<td>
-					${opetaja.getTelefon()}
 				</td>
 		</tr>
 	</table>
