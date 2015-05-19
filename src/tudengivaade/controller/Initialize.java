@@ -1,9 +1,14 @@
 package tudengivaade.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Date;
 import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Initialize {
 	private List<Oppejoud> opetajad = new ArrayList <Oppejoud>();
@@ -31,8 +36,32 @@ public class Initialize {
 
 
 	private void initOpetajad() {
-		this.opetajad.add(new Oppejoud(1, "Rauno", "Kulla", "Boss", "Tehnoloogia", "Tallinn, Tehnika 33", "20", "53451569", "raunokulla@hotmail.com"));
-		this.opetajad.add(new Oppejoud(2, "Oskar", "Liblik", "Sekretär", "Tehnoloogia", "Tallinn, Tehnika 33", "20", "53451569", "raunokulla@hotmail.com"));
+		JSONArray jsonArray = null;
+		try {
+			jsonArray = JsonReader.readJsonFromUrl("http://193.40.244.105:3389/bors-business-war/getteachers");
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		
+		for (int i = 0; i < jsonArray.length(); i++) {
+			try {
+
+				JSONObject json = jsonArray.getJSONObject(i);
+				Oppejoud oppejoud = new Oppejoud(json.getInt("id"),json.getJSONObject("kasutaja").getString("eesnimi"), json.getJSONObject("kasutaja").getString("perenimi"));
+				oppejoud.setInstituut(json.getJSONObject("instituut").getString("nimetus"));
+				oppejoud.setEmail(json.getJSONObject("kasutaja").getString("email"));
+				this.opetajad.add(oppejoud);
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
 		this.opetajad.add(new Oppejoud(3, "Ando", "Paju", "Rektor", "Tehnoloogia", "Tallinn, Tehnika 33", "20", "53451569", "raunokulla@hotmail.com"));
 		this.opetajad.add(new Oppejoud(4, "Rein", "Talvik", "Õppetooli hoidja", "Majandus", "Tallinn, Tehnika 33", "20", "53451569", "raunokulla@hotmail.com"));
 		this.opetajad.add(new Oppejoud(5, "Rauno", "Pehka", "Doktorant", "Matemaatika", "Tallinn, Tehnika 33", "20", "53451569", "raunokulla@hotmail.com"));

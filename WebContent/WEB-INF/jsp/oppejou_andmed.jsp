@@ -50,7 +50,7 @@
 	</table>
 </div>
 </div>
-<div id="oppejou_valikud" style="position: relative; left: 500px; top: -300px;">
+<div id="oppejou_valikud">
 <div class="form-group">
 
 

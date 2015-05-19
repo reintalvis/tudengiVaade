@@ -44,6 +44,13 @@ public class Oppejoud {
 		this.telefon = telefon;
 		this.email = email;
 	}
+	
+	public Oppejoud(int oppejoud_id, String eesnimi, String perenimi) {
+		super();
+		this.oppejoud_id = oppejoud_id;
+		this.eesnimi = eesnimi;
+		this.perenimi = perenimi;
+	}
 
 	public Oppejoud() {
 		// TODO Auto-generated constructor stub
